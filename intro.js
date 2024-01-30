@@ -10,5 +10,6 @@ document.getElementById('loginval').onkeydown = function(e){
  };
 
 document.getElementById("invsubmit").onclick = function () {
+    window.open("geminihtml.html")
     
 };
