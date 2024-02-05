@@ -44,7 +44,7 @@ async function test() {
 
   const model = genAI.getGenerativeModel({ model: "gemini-pro", safetySettings });
 
-  const prompt = "5 specific instances with details of the actual example of the violations by " + country.value + " in regards to the legality of " + legality.value + "make it very detailed and expand on the real life example cite your sources too with the link also specify the article that is being vioalted";
+  const prompt = "5 specific instances with details of the actual example including the peoples names and other details of the violations by " + country.value + " in regards to the legality of " + legality.value + "make it very detailed and expand on the real life example cite your sources too with the link also add the specific article being violated";
   const result = await model.generateContent(prompt);
   const response = await result.response;
   const text = response.text();
