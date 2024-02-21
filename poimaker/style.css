@@ -68,19 +68,66 @@ input[type="text"] {
 }
 
 button {
-
+	font-size:15px;
   padding: 10px 20px;
-  background-color: #1a1919;
-  color: #fff;
   border: none;
-  border-radius: 10px;
-  border: 1px solid #6246ea;
+  outline: none;
+  color: white;
+  background: #111;
   cursor: pointer;
+  position: relative;
+  z-index: 0;
+  border-radius: 10px;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
 }
 
-button:hover {
-  background-color: #6246ea;
+
+button:before {
+  content: "";
+  background: linear-gradient(
+    90deg,
+    #6246ea,
+    transparent,
+		 transparent,
+		#6246ea
+		
+  );
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  background-size: 400%;
+  z-index: -1;
+  filter: blur(8px);
+  width: calc(100% + 4px);
+  height: calc(100% + 4px);
+  animation: glowing-button 20s linear infinite;
+  transition: opacity 0.3s ease-in-out;
+  border-radius: 10px;
 }
+
+@keyframes glowing-button {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 400% 0;
+  }
+}
+
+button:after {
+  z-index: -1;
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: #111;
+  left: 0;
+  top: 0;
+  border-radius: 10px;
+}
+
 
 /* Simple fade-in animation with blur effect for #resultdiv */
 #resultdiv {
