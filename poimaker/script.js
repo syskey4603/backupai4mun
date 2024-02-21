@@ -6,7 +6,7 @@ let loader = document.getElementById("loadcontainer")
 let submitbutton = document.getElementById("submit")
 let span = null
 let node = null
-const genAI = new GoogleGenerativeAI("AIzaSyBBgo2dQo7OpMGXh3qLm49KlTAIUnyDYGo");
+const genAI = new GoogleGenerativeAI("AIzaSyAxbyKZxV8gas1mZn58zSpyOVtriIo2S3w");
 async function test() {
   
   let answerdiv = document.getElementById("answerdiv")
@@ -30,7 +30,13 @@ async function test() {
   submitbutton.disabled = true
   submitbutton.style.background='#796d6d';
 
+ 
 
+
+  try
+  {
+
+  
   const safetySettings = [
     {
       category: HarmCategory.HARM_CATEGORY_HARASSMENT,
@@ -50,7 +56,11 @@ async function test() {
   const text = response.text();
   var converter = new showdown.Converter();
   var html = converter.makeHtml(text);
-
+  }
+  catch(ex)
+  {
+      window.alert(ex)
+  }
   // Create a temporary div to set innerHTML
   const tempDiv = document.createElement("div");
   tempDiv.innerHTML = html;

@@ -1,11 +1,16 @@
 body {
-    width: 100%;
+    width: 99%;
 	background-color: #1a1919;
     font-family: "Poppins", sans-serif;
     display: flex;
     flex-direction: column;
     align-items: left;
     justify-content: left;
+}
+
+h1 {
+	color: white;
+	font-weight: bolder;
 }
 
 .wrapper span {
