@@ -276,7 +276,7 @@ div::-webkit-scrollbar {
 
 @property --color {
   syntax: '<color>';
-  initial-value: #789;
+  initial-value: #6246ea;
   inherits: true;
 }
 
@@ -310,7 +310,7 @@ div::-webkit-scrollbar {
 
 .silky-smooth {
   margin: 10px;
-  --color: #789;
+  --color: #6246ea;
   --time: 1s;
   appearance: none;
   font-size: 1.5rem;
@@ -351,7 +351,7 @@ div::-webkit-scrollbar {
   }
   
   &:hover {
-    --color: #58b;
+    --color: #6246ea;
     box-shadow: 0 0 0.1em var(--color), inset 0 0 0.1em var(--color);
     
     &::before {
