@@ -5,6 +5,9 @@ let cooldownpara = document.getElementById("cooldownpara")
 let loader = document.getElementById("loadcontainer")
 let submitbutton = document.getElementById("submit")
 let span = null
+const cb = document.querySelector('#silky-smooth');
+let prompt = ""
+console.log(cb.checked);
 let node = null
 const genAI = new GoogleGenerativeAI("AIzaSyAxbyKZxV8gas1mZn58zSpyOVtriIo2S3w");
 async function test() {
@@ -16,11 +19,16 @@ async function test() {
   answerdiv.innerHTML = "";
   originaltext.innerHTML = "";
 
-  
+  if(cb.checked == true) {
+    console.log("check")
+    console.log(country.value)
+  }
+  else {
   if(country.value == "" || legality.value == "") {
     window.alert("you have not entered values try again")
     return
   }
+}
 
   const qpara = document.createElement("p");
   qpara.style.verticalAlign = "bottom";
@@ -49,8 +57,12 @@ async function test() {
   ];
 
   const model = genAI.getGenerativeModel({ model: "gemini-pro", safetySettings });
-
-  const prompt = "5 specific instances with details of the actual example including the peoples names and other details of the violations by " + country.value + " in regards to the legality of " + legality.value + "make it very detailed and expand on the real life example cite your sources too with the link also add the specific article being violated and add one line of line gap between each scentence";
+  if(cb.checked == true) {
+    prompt = "give me 50 different instances of different countries violating the " + legality.value + " make it simple but include the real instance with names and dates but make it for all 50 of the main countries dont give general violations make it extremely specific with real events that took place also add a line of space between each violation with a colon to seperate the country ansd the violation remember to be very specific and give the real names and dates";
+  }
+  else {
+  prompt = "5 specific instances with details of the actual example including the peoples names and other details of the violations by " + country.value + " in regards to the legality of " + legality.value + "make it very detailed and expand on the real life example cite your sources too with the link also add the specific article being violated and add one line of line gap between each scentence";
+  }
   const result = await model.generateContent(prompt);
   const response = await result.response;
   const text = response.text();
