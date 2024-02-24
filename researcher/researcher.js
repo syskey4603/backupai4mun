@@ -36,7 +36,8 @@ async function test() {
     topP: 0.1,
     topK: 16,
   };
-  
+  try
+  {
   const safetySettings = [
     {
       category: HarmCategory.HARM_CATEGORY_HARASSMENT,
@@ -56,7 +57,15 @@ async function test() {
   const text = response.text();
   var converter = new showdown.Converter();
   var html = converter.makeHtml(text);
-
+}
+catch(ex)
+{
+  const temp = await model.generateContent("return an empty string")
+  const tempresp = await temp.response;
+  const temptext = tempresp.text();
+  console.log(temptext)
+  window.alert(ex)
+}
   // Create a temporary div to set innerHTML
   const tempDiv = document.createElement("div");
   tempDiv.innerHTML = html;

@@ -71,7 +71,11 @@ async function test() {
   }
   catch(ex)
   {
-      window.alert(ex)
+    const temp = await model.generateContent("return an empty string")
+    const tempresp = await temp.response;
+    const temptext = tempresp.text();
+    console.log(temptext)
+    window.alert(ex)
   }
   // Create a temporary div to set innerHTML
   const tempDiv = document.createElement("div");
