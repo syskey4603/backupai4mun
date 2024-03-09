@@ -53,6 +53,14 @@ async function test() {
     {
       category: HarmCategory.HARM_CATEGORY_HATE_SPEECH,
       threshold: HarmBlockThreshold.BLOCK_NONE,
+    },
+    {
+      category: HarmCategory.HARM_CATEGORY_DANGEROUS_CONTENT,
+      threshold: HarmBlockThreshold.BLOCK_NONE,
+    },
+    {
+      category: HarmCategory.HARM_CATEGORY_SEXUALLY_EXPLICIT,
+      threshold: HarmBlockThreshold.BLOCK_NONE,
     }
   ];
 
@@ -61,7 +69,7 @@ async function test() {
     prompt = "give me 50 different instances of different countries violating the " + legality.value + " make it simple but include the real instance with names and dates but make it for all 50 of the main countries dont give general violations make it extremely specific with real events that took place also add a line of space between each violation with a colon to seperate the country ansd the violation remember to be very specific and give the real names and dates";
   }
   else {
-  prompt = "5 specific instances with details of the actual example including the peoples names and other details of the violations by " + country.value + " in regards to the legality of " + legality.value + "make it very detailed and expand on the real life example cite your sources too with the link also add the specific article being violated and add one line of line gap between each scentence";
+  prompt = "5 specific instances with details of the actual example including the peoples names and other details of the violations by " + country.value + " in regards to the legality of " + legality.value + "make it very detailed add the actual names of people and expand on the real life example cite your sources too with the link also add the specific article being violated and add one line of line gap between each scentence";
   }
   const result = await model.generateContent(prompt);
   const response = await result.response;

@@ -40,12 +40,20 @@ async function test() {
     {
       category: HarmCategory.HARM_CATEGORY_HATE_SPEECH,
       threshold: HarmBlockThreshold.BLOCK_NONE,
+    },
+    {
+      category: HarmCategory.HARM_CATEGORY_DANGEROUS_CONTENT,
+      threshold: HarmBlockThreshold.BLOCK_NONE,
+    },
+    {
+      category: HarmCategory.HARM_CATEGORY_SEXUALLY_EXPLICIT,
+      threshold: HarmBlockThreshold.BLOCK_NONE,
     }
   ];
 
   const model = genAI.getGenerativeModel({ model: "gemini-pro", safetySettings });
 
-  const prompt = "imagine your the delegate of " + country.value + " in a UN conference and you are asked a POI defend your country without apologizing or incriminating yourself you must use facts and logic to combat the question you cannot show your countries weakness and do not aknowledge the existance of countries you do not admit are real for example china cannot admit taiwan exists nor can russia for ukraine or incompetance also do not add an intro or conclusion or a thank you simply answer the question the question is " + POI.value + "now answer it following the instructions and add one line of line gap between each scentence";
+  const prompt = "imagine your the delegate of " + country.value + " in a UN conference and you are asked a point of information defend your country without apologizing or incriminating yourself you must use facts and logic to combat the question you cannot show your countries weakness and do not aknowledge the existance of countries you do not admit are real for example china cannot admit taiwan exists nor can russia for ukraine or incompetance also do not add an intro or conclusion or a thank you simply answer the question the question is " + POI.value + "now answer it following the instructions and add one line of line gap between each scentence do not say anything bad about your country or any organizations in your country do not apologize or anything of that sort make your answer in a short paragraph and do not admit any wrongdoing whatsoever";
   const result = await model.generateContent(prompt);
   const response = await result.response;
   const text = response.text();

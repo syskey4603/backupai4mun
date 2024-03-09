@@ -46,9 +46,17 @@ async function test() {
     {
       category: HarmCategory.HARM_CATEGORY_HATE_SPEECH,
       threshold: HarmBlockThreshold.BLOCK_NONE,
+    },
+    {
+      category: HarmCategory.HARM_CATEGORY_DANGEROUS_CONTENT,
+      threshold: HarmBlockThreshold.BLOCK_NONE,
+    },
+    {
+      category: HarmCategory.HARM_CATEGORY_SEXUALLY_EXPLICIT,
+      threshold: HarmBlockThreshold.BLOCK_NONE,
     }
   ];
-
+  
   const model = genAI.getGenerativeModel({ model: "gemini-pro", generationConfig, safetySettings });
 
   const prompt = "imagine your the delegate of " + country.value + " in a MUN now you need to build comprehensive solutions on the agenda of " + agenda.value + " that the country can impliment, make each solution detailed and specific and each 500 words and add one line of line gap between each point";
