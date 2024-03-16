@@ -15,6 +15,7 @@ async function test() {
   let answerdiv = document.getElementById("answerdiv")
   let country = document.getElementById("country");
   let legality = document.getElementById("legality");
+  let freezedate = document.getElementById("freezedate");
   let originaltext = document.getElementById("originaltext");
   answerdiv.innerHTML = "";
   originaltext.innerHTML = "";
@@ -32,7 +33,12 @@ async function test() {
 
   const qpara = document.createElement("p");
   qpara.style.verticalAlign = "bottom";
+  if(freezedate.value != "") {
+    qpara.innerText = "Country: " + country.value + "  \n Legality: " + legality.value + "\n Freeze Date: " + freezedate.value + "\n \n";
+  }
+  else {
   qpara.innerText = "Country: " + country.value + "  \n Legality: " + legality.value + "\n \n";
+  }
   originaltext.appendChild(qpara);
   loader.style.visibility='visible'
   submitbutton.disabled = true
@@ -66,11 +72,21 @@ async function test() {
 
   const model = genAI.getGenerativeModel({ model: "gemini-pro", safetySettings });
   if(cb.checked == true) {
+    if(freezedate.value != "") {
+      prompt = "give me 50 different instances of different countries violating the " + legality.value + " make it simple but include the real instance with names and dates but make it for all 50 of the main countries dont give general violations make it extremely specific with real events that took place also add a line of space between each violation with a colon to seperate the country ansd the violation remember to be very specific and give the real names and dates also do not research for information that was found after " + freezedate.value + "all information has to be from before " + freezedate.value;
+    }
+    else {
     prompt = "give me 50 different instances of different countries violating the " + legality.value + " make it simple but include the real instance with names and dates but make it for all 50 of the main countries dont give general violations make it extremely specific with real events that took place also add a line of space between each violation with a colon to seperate the country ansd the violation remember to be very specific and give the real names and dates";
   }
+}
   else {
-  prompt = "5 specific instances with details of the actual example including the peoples names and other details of the violations by " + country.value + " in regards to the legality of " + legality.value + "make it very detailed add the actual names of people and expand on the real life example cite your sources too with the link also add the specific article being violated and add one line of line gap between each scentence";
+    if(freezedate.value != "") {
+      prompt = "5 specific instances with details of the actual example including the peoples names and other details of the violations by " + country.value + " in regards to the legality of " + legality.value + " do not find anything after this date " + freezedate.value + " no information can be taken from after that date make it very detailed add the actual names of people and expand on the real life example cite your sources too with the link also add the specific article being violated with the date of the violations and add one line of line gap between each scentence";
+    }
+    else {
+  prompt = "5 specific instances with details of the actual example including the peoples names and other details of the violations by " + country.value + " in regards to the legality of " + legality.value + "make it very detailed add the actual names of people and expand on the real life example cite your sources too with the link also add the specific article being violated with the date of the violations and add one line of line gap between each scentence";
   }
+}
   const result = await model.generateContent(prompt);
   const response = await result.response;
   const text = response.text();
