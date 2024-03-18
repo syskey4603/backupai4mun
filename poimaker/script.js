@@ -141,10 +141,15 @@ async function test() {
   country.value = "";
   legality.value = "";
   
+  
 }
+
+console.log(answerdiv.innerText)
 
 document.getElementById("submit").onclick = function () {
   test();
+
+  
 
   
 
