@@ -6,6 +6,7 @@ let loader = document.getElementById("loadcontainer")
 let submitbutton = document.getElementById("submit")
 let span = null
 let node = null
+let prompt = ""
 const genAI = new GoogleGenerativeAI("AIzaSyCsEZUNrjERevPFJnLe-3gI8nN6kTe5yEY");
 async function test() {
   
@@ -24,7 +25,12 @@ async function test() {
 
   const qpara = document.createElement("p");
   qpara.style.verticalAlign = "bottom";
+  if(freezedate.value != "") {
+    qpara.innerText = "Country: " + country.value + "  \n Agenda: " + agenda.value + "\n Freeze Date: " + freezedate.value + "\n \n";
+  }
+  else {
   qpara.innerText = "Country: " + country.value + "\n\n" + "Agenda: " + agenda.value + "\n"
+  }
   originaltext.appendChild(qpara);
   loader.style.visibility='visible'
   submitbutton.disabled = true
@@ -60,7 +66,12 @@ async function test() {
 
   const model = genAI.getGenerativeModel({ model: "gemini-pro", generationConfig, safetySettings });
 
-  const prompt = "imagine your the delegate of " + country.value + " in a MUN now you need to build comprehensive research on the agenda of " + agenda.value + " mostly focus on statistical and facts instead of opinions stuff your going to research on includes General Politics make sure to mention and be specific on head of state, Health Statistics be specific and descriptive military statistics, Legaslatives related to the agenda not just related to the country but the agenda at whole example the ICCPR,UDHR,GENEVA CONVENTIONS mention these please, detailed and specific solutions atleast 500 words for each solution for the agenda that the given country can implement, Research and basis of the agenda, Governmental Programs On The Agenda BE VERY SPECIFIC WE WANT NAMES STATISTICS AND EVERYTHING, Positive and negative things about that country on the given agenda, Controversial statements by your government on the given agenda, Pro statements by your government on the given agenda, Be SUPER SPECIFIC AND DESCRIPTIVE DO NOT SIMPLIFY and add one line of line gap between each scentenceand add one line of line gap between each scentence";
+  if(freezedate.value != "") {
+    prompt = "imagine your the delegate of " + country.value + " in a MUN now you need to build comprehensive research on the agenda of " + agenda.value + " research only on information before the date " + freezedate.value + "mostly focus on statistical and facts instead of opinions stuff your going to research on includes General Politics make sure to mention and be specific on head of state, Health Statistics be specific and descriptive military statistics, Legaslatives related to the agenda not just related to the country but the agenda at whole example the ICCPR,UDHR,GENEVA CONVENTIONS mention these please, detailed and specific solutions atleast 500 words for each solution for the agenda that the given country can implement, Research and basis of the agenda, Governmental Programs On The Agenda BE VERY SPECIFIC WE WANT NAMES STATISTICS AND EVERYTHING, Positive and negative things about that country on the given agenda, Controversial statements by your government on the given agenda, Pro statements by your government on the given agenda, Be SUPER SPECIFIC AND DESCRIPTIVE DO NOT SIMPLIFY and add one line of line gap between each scentenceand add one line of line gap between each scentence no information can be of anything after the date " + freezedate.value;
+  }
+  else {
+    prompt = "imagine your the delegate of " + country.value + " in a MUN now you need to build comprehensive research on the agenda of " + agenda.value + " mostly focus on statistical and facts instead of opinions stuff your going to research on includes General Politics make sure to mention and be specific on head of state, Health Statistics be specific and descriptive military statistics, Legaslatives related to the agenda not just related to the country but the agenda at whole example the ICCPR,UDHR,GENEVA CONVENTIONS mention these please, detailed and specific solutions atleast 500 words for each solution for the agenda that the given country can implement, Research and basis of the agenda, Governmental Programs On The Agenda BE VERY SPECIFIC WE WANT NAMES STATISTICS AND EVERYTHING, Positive and negative things about that country on the given agenda, Controversial statements by your government on the given agenda, Pro statements by your government on the given agenda, Be SUPER SPECIFIC AND DESCRIPTIVE DO NOT SIMPLIFY and add one line of line gap between each scentenceand add one line of line gap between each scentence";
+  }
   const result = await model.generateContent(prompt);
   const response = await result.response;
   const text = response.text();
