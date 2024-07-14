@@ -5,33 +5,45 @@ let cooldownpara = document.getElementById("cooldownpara")
 let loader = document.getElementById("loadcontainer")
 let submitbutton = document.getElementById("submit")
 let span = null
+let prompt = ""
 let node = null
 const genAI = new GoogleGenerativeAI("AIzaSyCHSuFua2sPggTV5uHe_62RcfKYgq-uZtE");
 async function test() {
   
   let answerdiv = document.getElementById("answerdiv")
-  let POI = document.getElementById("POI");
   let country = document.getElementById("country");
+  let legality = document.getElementById("legality");
+  let freezedate = document.getElementById("freezedate");
   let originaltext = document.getElementById("originaltext");
   answerdiv.innerHTML = "";
   originaltext.innerHTML = "";
 
-  
-  if(country.value == "" || POI.value == "") {
+
+  if(country.value == "" || legality.value == "") {
     window.alert("you have not entered values try again")
     return
   }
 
   const qpara = document.createElement("p");
   qpara.style.verticalAlign = "bottom";
-  qpara.innerText = "Country: " + country.value + "\n\n" + "POI: " + POI.value + "\n"
+  if(freezedate.value != "") {
+    qpara.innerText = "Portfolio: " + country.value + "  \n Legality: " + legality.value + "\n Freeze Date: " + freezedate.value + "\n \n";
+  }
+  else {
+  qpara.innerText = "Portfolio: " + country.value + "  \n Legality: " + legality.value + "\n \n";
+  }
   originaltext.appendChild(qpara);
   loader.style.visibility='visible'
   submitbutton.disabled = true
   submitbutton.style.background='#796d6d';
+
+ 
+
+
   try
   {
 
+  
   const safetySettings = [
     {
       category: HarmCategory.HARM_CATEGORY_HARASSMENT,
@@ -52,22 +64,48 @@ async function test() {
   ];
 
   const model = genAI.getGenerativeModel({ model: "gemini-pro", safetySettings });
-
-  const prompt = "imagine your the delegate of " + country.value + " in a UN conference and you are asked a point of information defend your country without apologizing or incriminating yourself you must use facts and logic to combat the question you cannot show your countries weakness and do not aknowledge the existance of countries you do not admit are real for example china cannot admit taiwan exists nor can russia for ukraine or incompetance also do not add an intro or conclusion or a thank you simply answer the question the question is " + POI.value + "now answer it following the instructions and add one line of line gap between each scentence do not say anything bad about your country or any organizations in your country do not apologize or anything of that sort and do not admit any wrongdoing whatsoever";
+    if(freezedate.value != "") {
+        console.log("freeze date")
+      prompt = "5 specific instances with details of the actual example including the peoples names and other details of the violations by " + country.value + " in regards to the legality of " + legality.value + " do not find any information or any events that took place after this date " + freezedate.value + " make it very detailed add the actual names of people and expand on the real life example cite your sources too with the link make sure the link actually works and does not return a not found error also add the specific article being violated with the date of the violations and add one line of line gap between each scentence";
+    }
+    else {
+  prompt = "5 specific instances with details of the actual example including the peoples names and other details of the violations by " + country.value + " in regards to the legality of " + legality.value + "make it very detailed add the actual names of people and expand on the real life example cite your sources too with the link make sure the link actually works and does not return a not found error also add the specific article being violated with the date of the violations and add one line of line gap between each scentence";
+  }
   const result = await model.generateContent(prompt);
   const response = await result.response;
   const text = response.text();
   var converter = new showdown.Converter();
   var html = converter.makeHtml(text);
-}
-catch(ex)
-{
-  const temp = await model.generateContent("return an empty string")
-  const tempresp = await temp.response;
-  const temptext = tempresp.text();
-  console.log(temptext)
-  window.alert(ex)
-}
+  }
+  catch(ex)
+  {
+    window.alert(ex)
+    const safetySettings = [
+      {
+        category: HarmCategory.HARM_CATEGORY_HARASSMENT,
+        threshold: HarmBlockThreshold.BLOCK_NONE,
+      },
+      {
+        category: HarmCategory.HARM_CATEGORY_HATE_SPEECH,
+        threshold: HarmBlockThreshold.BLOCK_NONE,
+      },
+      {
+        category: HarmCategory.HARM_CATEGORY_DANGEROUS_CONTENT,
+        threshold: HarmBlockThreshold.BLOCK_NONE,
+      },
+      {
+        category: HarmCategory.HARM_CATEGORY_SEXUALLY_EXPLICIT,
+        threshold: HarmBlockThreshold.BLOCK_NONE,
+      }
+    ];
+  
+    const model = genAI.getGenerativeModel({ model: "gemini-pro", safetySettings });
+    const temp = await model.generateContent("return an empty string")
+    const tempresp = await temp.response;
+    const temptext = tempresp.text();
+    console.log(temptext)
+    window.alert(ex)
+  }
   // Create a temporary div to set innerHTML
   const tempDiv = document.createElement("div");
   tempDiv.innerHTML = html;
@@ -106,21 +144,21 @@ catch(ex)
   processNodesWithDelay(tempDiv.childNodes, 0);
 
   country.value = "";
-  POI.value = "";
+  legality.value = "";
+  
   
 }
+
+console.log(answerdiv.innerText)
 
 document.getElementById("submit").onclick = function () {
   test();
 
   
 
+  
+
 
   
   }
-
-
-
-
-
 

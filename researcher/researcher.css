@@ -132,7 +132,6 @@ button:after {
   padding: 5px;
   width: 90%;
   height: 90%;
-  overflow: hidden;
   text-align: justify;
   vertical-align: bottom;
   background-color: transparent; /* Make the background transparent */

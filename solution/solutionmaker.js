@@ -59,7 +59,7 @@ async function test() {
   
   const model = genAI.getGenerativeModel({ model: "gemini-pro", generationConfig, safetySettings });
 
-  const prompt = "imagine your the delegate of " + country.value + " in a MUN now you need to build comprehensive solutions on the agenda of " + agenda.value + " that the country can impliment, make each solution detailed and specific and each 500 words and add one line of line gap between each point";
+  const prompt = "imagine your the delegate of " + country.value + " in a MUN now you need to build 2 comprehensive and unique solutions on the agenda of " + agenda.value + " that the country can impliment, make each solution detailed and specific and each 500 words and add one line of line gap between each point";
   const result = await model.generateContent(prompt);
   const response = await result.response;
   const text = response.text();
