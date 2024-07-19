@@ -59,7 +59,7 @@ async function test() {
   
   const model = genAI.getGenerativeModel({ model: "gemini-pro", generationConfig, safetySettings });
 
-  const prompt = "imagine your the delegate of " + country.value + " in a MUN now you need to build 2 comprehensive and unique solutions on the agenda of " + agenda.value + " that the country can impliment, make each solution detailed and specific and each 500 words and add one line of line gap between each point";
+  const prompt = "imagine your the delegate of " + country.value + " in a MUN now you need to build 2 comprehensive and unique like really unique solutions on the agenda of " + agenda.value + " that the country can impliment, make each solution detailed and specific and make each solution extremely specific and all the steps the country would take to actually implement it, take into account any challenges and how you would overcome them make them really unique not the generic solutions like give really new and never before seen solutions to the issue provided";
   const result = await model.generateContent(prompt);
   const response = await result.response;
   const text = response.text();
@@ -68,10 +68,10 @@ async function test() {
 }
 catch(ex)
 {
-  const temp = await model.generateContent("return an empty string")
-  const tempresp = await temp.response;
-  const temptext = tempresp.text();
-  console.log(temptext)
+ // const temp = await model.generateContent("return an empty string")
+  //const tempresp = await temp.response;
+  //const temptext = tempresp.text();
+  //console.log(temptext)
   window.alert(ex)
 }
   // Create a temporary div to set innerHTML
