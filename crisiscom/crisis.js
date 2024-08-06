@@ -11,28 +11,8 @@ const genAI = new GoogleGenerativeAI("AIzaSyCHSuFua2sPggTV5uHe_62RcfKYgq-uZtE");
 async function test() {
   
   let answerdiv = document.getElementById("answerdiv")
-  let country = document.getElementById("country");
-  let legality = document.getElementById("legality");
-  let freezedate = document.getElementById("freezedate");
-  let originaltext = document.getElementById("originaltext");
-  answerdiv.innerHTML = "";
-  originaltext.innerHTML = "";
-
-
-  if(country.value == "" || legality.value == "") {
-    window.alert("you have not entered values try again")
-    return
-  }
-
-  const qpara = document.createElement("p");
-  qpara.style.verticalAlign = "bottom";
-  if(freezedate.value != "") {
-    qpara.innerText = "Portfolio: " + country.value + "  \n Legality: " + legality.value + "\n Freeze Date: " + freezedate.value + "\n \n";
-  }
-  else {
-  qpara.innerText = "Portfolio: " + country.value + "  \n Legality: " + legality.value + "\n \n";
-  }
-  originaltext.appendChild(qpara);
+  let query = document.getElementById("query");
+  console.log(query.value)
   loader.style.visibility='visible'
   submitbutton.disabled = true
   submitbutton.style.background='#796d6d';
@@ -64,13 +44,7 @@ async function test() {
   ];
 
   const model = genAI.getGenerativeModel({ model: "gemini-pro", safetySettings });
-    if(freezedate.value != "") {
-        console.log("freeze date")
-      prompt = "5 specific instances with details of the actual example including the peoples names and other details of the violations by " + country.value + " in regards to the legality of " + legality.value + " do not find any information or any events that took place after this date " + freezedate.value + " make it very detailed add the actual names of people and expand on the real life example cite your sources too with the link make sure the link actually works and does not return a not found error also add the specific article being violated with the date of the violations and add one line of line gap between each scentence";
-    }
-    else {
-  prompt = "5 specific instances with details of the actual example including the peoples names and other details of the violations by " + country.value + " in regards to the legality of " + legality.value + "make it very detailed add the actual names of people and expand on the real life example cite your sources too with the link make sure the link actually works and does not return a not found error also add the specific article being violated with the date of the violations and add one line of line gap between each scentence";
-  }
+  prompt = query.value
   const result = await model.generateContent(prompt);
   const response = await result.response;
   const text = response.text();
@@ -143,8 +117,6 @@ async function test() {
   // Start processing nodes with a delay
   processNodesWithDelay(tempDiv.childNodes, 0);
 
-  country.value = "";
-  legality.value = "";
   
   
 }
