@@ -16,7 +16,7 @@ async function test() {
   loader.style.visibility='visible'
   submitbutton.disabled = true
   submitbutton.style.background='#796d6d';
-
+  answerdiv.innerHTML = "";
  
 
 
