@@ -1,0 +1,40 @@
+
+{
+    "violations": [
+    {
+    "name": "Detention of Uyghurs",
+    "details": "The Chinese government has detained more than one million Uyghurs in concentration camps since 2017. The detainees are subjected to forced labor, political indoctrination, and torture. The government has also destroyed Uyghur mosques and cultural sites.",
+    "article": "Article 7 of the International Covenant on Civil and Political Rights",
+    "date": "2017-present",
+    "source": "https://www.hrw.org/report/2021/04/19/chinas-crimes-against-humanity-targeting-uyghurs-other-muslim-groups"
+    },
+    {
+    "name": "Crackdown on Hong Kong",
+    "details": "In 2020, the Chinese government imposed a national security law on Hong Kong, which has been used to crack down on dissent. The law has been used to arrest and imprison pro-democracy activists, journalists, and politicians.",
+    "article": "Article 19 of the Universal Declaration of Human Rights",
+    "date": "2020-present",
+    "source": "https://www.amnesty.org/en/latest/news/2020/07/hong-kong-national-security-law-a-chilling-blow-to-human-rights/"
+    },
+    {
+    "name": "Suppression of Tibetans",
+    "details": "The Chinese government has suppressed the Tibetan people's religious and cultural rights. The government has destroyed Tibetan monasteries, arrested and imprisoned Tibetan monks and activists, and forced Tibetans to renounce their religion.",
+    "article": "Article 18 of the Universal Declaration of Human Rights",
+    "date": "1950-present",
+    "source": "https://www.hrw.org/report/2020/09/11/repression-without-end-chinas-crackdown-on-tibets-religious-freedom"
+    },
+    {
+    "name": "Xinjiang internment camps",
+    "details": "The Chinese government has detained over one million Uyghur Muslims in internment camps in the Xinjiang region. The detainees are subjected to forced labor, political indoctrination, and torture. The government has also destroyed Uyghur mosques and cultural sites.",
+    "article": "Article 7 of the International Covenant on Civil and Political Rights",
+    "date": "2017-present",
+    "source": "https://www.hrw.org/report/2021/04/19/chinas-crimes-against-humanity-targeting-uyghurs-other-muslim-groups"
+    },
+    {
+    "name": "Hong Kong national security law",
+    "details": "The Chinese government imposed a national security law on Hong Kong in 2020. The law has been used to crack down on dissent, and has led to the arrest and imprisonment of pro-democracy activists, journalists, and politicians.",
+    "article": "Article 19 of the Universal Declaration of Human Rights",
+    "date": "2020-present",
+    "source": "https://www.amnesty.org/en/latest/news/2020/07/hong-kong-national-security-law-a-chilling-blow-to-human-rights/"
+    }
+    ]
+    }
