@@ -7,7 +7,7 @@ let submitbutton = document.getElementById("submit")
 let span = null
 let node = null
 let prompt = ""
-const genAI = new GoogleGenerativeAI("AIzaSyCHSuFua2sPggTV5uHe_62RcfKYgq-uZtE");
+const genAI = new GoogleGenerativeAI("AIzaSyADYDBfE9gonuXKQHmNtH4bHygiidOE47g");
 async function test() {
   
   let answerdiv = document.getElementById("answerdiv")

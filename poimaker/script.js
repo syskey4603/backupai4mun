@@ -9,7 +9,7 @@ const cb = document.querySelector('#silky-smooth');
 let prompt = ""
 console.log(cb.checked);
 let node = null
-const genAI = new GoogleGenerativeAI("AIzaSyCHSuFua2sPggTV5uHe_62RcfKYgq-uZtE");
+const genAI = new GoogleGenerativeAI("AIzaSyADYDBfE9gonuXKQHmNtH4bHygiidOE47g");
 async function test() {
   
   let answerdiv = document.getElementById("answerdiv")
