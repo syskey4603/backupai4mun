@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Legal Violation Finder</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Legal Violation Finder</h1>
+        <form id="query-form">
+            <div class="form-group">
+                <input type="text" id="country" placeholder="Enter country (optional)" />
+            </div>
+            <div class="form-group">
+                <input type="text" id="agenda" placeholder="Enter agenda or legality" required />
+            </div>
+            <div class="form-group">
+                <input type="date" id="freezeDate" placeholder="Optional: Freeze Date" />
+            </div>
+            <button type="submit">Search</button>
+        </form>
+        <div id="results"></div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
