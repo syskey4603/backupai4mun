@@ -1,5 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 
+.navbarbox {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: #1a1919;
+    font-family: "Poppins", sans-serif;
+    box-shadow: 0 0 25px #6246ea, 0 0 35px #9a67ea; /* Enhanced the glow effect to make it more prominent */
+    position: relative;
+    z-index: 10; /* Ensuring navbar stays on top */
+}
 
 .navbarbox, .navul {
     display: flex;
@@ -9,31 +19,9 @@
     padding: 15px 0;
     margin-bottom: 15px;
 }
-.footer {
-    position: fixed;
-    color: white;
-    top: 55; 
-    left: 50; 
-    z-index: 10;
-  
-  }
 
-  img {
-    display: block;
-    margin-left: right;
-    margin-right: right;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-  }
-
-.navbarbox {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    background-color: #1a1919;
-    font-family: "Poppins", sans-serif;
-    box-shadow: 0 0 20px 0 #6246ea;
+.navul {
+    list-style: none;
 }
 
 .navbarbox .navul .navli {
@@ -42,11 +30,6 @@
 
 .navbarbox .navul .navli:not(:nth-child(3)) {
     margin-right: 30px;
-}
-
-.navbarbox .navul .navli .nava:hover {
-    transition: 0.3s all;
-    background-color: #494848d5;
 }
 
 .navbarbox .navul .navli .nava {
@@ -58,20 +41,32 @@
     border-radius: 5px;
 }
 
-
-@keyframes animate {
-    100% {
-        transform: rotate(360deg);
-    }
+.navbarbox .navul .navli .nava:hover {
+    transition: 0.3s all;
+    background-color: #494848d5;
 }
 
+/* Spinning logo */
 img {
-	animation: animate 10s linear infinite;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    animation: animate 10s linear infinite;
     box-shadow: inset 0 0 18px #fff, 
                 inset 6px 0 18px violet, 
                 inset -6px 0 18px #0ff, 
                 inset 6px 0 30px violet, 
                 inset -6px 0 30px #0ff, 
-                0 0 18px #fff, -4px 
-                0 18px violet, 4px 0 18px #0ff;
+                0 0 18px #fff, 
+                -4px 0 18px violet, 
+                4px 0 18px #0ff;
+}
+
+@keyframes animate {
+    100% {
+        transform: rotate(360deg);
+    }
 }

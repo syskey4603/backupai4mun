@@ -1,23 +1,10 @@
-let loginval = document.getElementById("loginval")
-
-
-
-
-document.getElementById("invsubmit").onclick = function () {
-    console.log("test")
-    if(loginval.value == "maker") {
-        window.open("geminihtml.html")
-
-    }
-    if(loginval.value == "answerer") {
-        window.open("poianswer.html")
-    }
-    if(loginval.value == "researcher") {
-        window.open("researcher.html")
-    }
-    if(loginval.value == "solution") {
-        window.open("solutions.html")
-    }
-     
-}
-
+document.addEventListener("DOMContentLoaded", function() {
+    setTimeout(function() {
+        const intro = document.getElementById("intro");
+        intro.style.opacity = "0";
+        intro.style.transition = "opacity 1s ease";
+        setTimeout(function() {
+            intro.style.display = "none";
+        }, 1000);
+    }, 3000);
+});
